@@ -1,5 +1,6 @@
 /*
 Copyright (c) 2011, Chris Umbel
+Modified for multiclassification (c) 2011, Matthew Barnett <matt@wtmworldwide.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,11 +25,12 @@ var natural = require('natural'),
     classifier = new natural.BayesClassifier();
 
 classifier.train([
-		  {classification: 'software', text: "my unit-tests failed."},
-		  {classification: 'software', text: "tried the program, but it was buggy."},
-		  {classification: 'hardware', text: "the drive has a 2TB capacity."},
-		  {classification: 'hardware', text: "i need a new power supply."}
-		  ]);
+	{classification: 'software', text: "my unit-tests failed."},
+	{classification: 'software', text: "tried the program, but it was buggy."},
+	{classification: 'hardware', text: "the drive has a 2TB capacity."},
+	{classification: 'hardware', text: "i need a new power supply."}
+]);
 
 console.log(classifier.classify('did the tests pass?'));
 console.log(classifier.classify('did you buy a new drive?'));
+console.log(classifier.multiclassify('I wish Jeff\'s harddrive didn\'t suck'));
